@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import React from 'react'
+import React, { useContext } from 'react'
+import { StateContext } from './hooks/StateContext';
 
 // Screens
 import ChatScreen from './screens/ChatScreen';
@@ -9,9 +10,9 @@ import LoginScreen from "./screens/LoginScreen"
 
 const Stack = createNativeStackNavigator();
 
-
 const StackNavigator = () => {
-    const user = false;
+    const [ user, setUser] = useContext(StateContext) 
+    console.log(user);
 
     return (
         <Stack.Navigator>
