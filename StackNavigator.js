@@ -11,7 +11,7 @@ import LoginScreen from "./screens/LoginScreen"
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
-    const [ user, setUser] = useContext(StateContext) 
+    const { user } = useContext(StateContext) 
     console.log(user);
 
     return (
