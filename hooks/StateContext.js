@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState, useMemo } from "react";
 import * as Google from "expo-google-app-auth";
 import {
   GoogleAuthProvider,
@@ -73,15 +73,24 @@ export const AuthStateProvider = (props) => {
       .finally(() => setLoading(false));
   };
 
-  return (
-    <StateContext.Provider
-      value={{
-        user,
+  // Helps us rerender things values quicker useMemo
+  // It changes only the thing is updating not the whole tree
+
+  const memoedValue = useMemo(
+    () => ({
+         user,
         loading,
         error,
         logOut,
         signInWithGoogle,
-      }}
+
+    }),
+    [user, loading, error]
+  )
+
+  return (
+    <StateContext.Provider
+      value={memoedValue}
     >
       {/* Loadinginitial will help in delay of home screen after the refresh or restarting app */}
       {!loadingInitial && props.children}
