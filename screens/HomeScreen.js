@@ -3,7 +3,31 @@ import { View, Text,Button, SafeAreaView, TouchableOpacity, Image } from 'react-
 import { StateContext } from '../hooks/StateContext'
 import tw from "tailwind-rn";
 import {Ionicons} from "@expo/vector-icons";
-import {Swiper} from "react-native-deck-swiper";
+// import {Swiper} from "react-native-deck-swiper";
+
+const DUMMY_DATA = [
+    {
+        firstName: "MIhir",
+        lastName: "Paunikar",
+        occupation: "Programmer",
+        photoURL: "https://lh3.googleusercontent.com/a-/AOh14GjKyAnsHc5dY3X57NKG_jUN2CXGZZ15h2b4UwGK=s96-c",
+        age: 20,
+    },
+    {
+        firstName: "Yash",
+        lastName: "Paunikar",
+        occupation: "Bussinessman",
+        photoURL: "https://lh3.googleusercontent.com/a-/AOh14GjKyAnsHc5dY3X57NKG_jUN2CXGZZ15h2b4UwGK=s96-c",
+        age: 17,
+    }, 
+    {
+        firstName: "Simran",
+        lastName: "Paunikar",
+        occupation: "Student",
+        photoURL: "https://lh3.googleusercontent.com/a-/AOh14GjKyAnsHc5dY3X57NKG_jUN2CXGZZ15h2b4UwGK=s96-c",
+        age: 20,
+    }
+]
 
 const HomeScreen = ({navigation}) => {
     const {logOut, user} = useContext(StateContext);
@@ -38,9 +62,18 @@ const HomeScreen = ({navigation}) => {
 
             </View>
 
+            {/* Cards */}
+            {/* <Swiper
+                cards={DUMMY_DATA}
+                renderCard={(card) => {
+                    <View>
+                        <Text>{card.firstName}</Text>
+                    </View>
+                }}
+            /> */}
 
-            {/* <Text>I am  </Text>
-            <Button title="Logout" onPress={logOut} /> */}
+            <Text>I am  </Text>
+            <Button title="Logout" onPress={logOut} />
         </SafeAreaView>
     )
 }
